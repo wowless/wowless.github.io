@@ -1,0 +1,5 @@
+fetch("https://api.github.com/repos/wowless/wowless/actions/artifacts?name=test-results&per_page=1")
+  .then(res => res.json())
+  .then(json => fetch(json.artifacts[0].archive_download_url))
+  .then(res => res.text())
+  .then(body => document.body.append(body.length))
